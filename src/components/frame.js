@@ -8,15 +8,17 @@ import Toolbar from "@material-ui/core/Toolbar";
 import List from "@material-ui/core/List";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
-import Divider from "@material-ui/core/Divider";
+//import Divider from "@material-ui/core/Divider";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
-import AccountCircle from "@material-ui/icons/AccountCircle";
+//import AccountCircle from "@material-ui/icons/AccountCircle";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import SearchIcon from "@material-ui/icons/Search";
+import Link from 'react-router-dom/Link';
+
 const drawerWidth = 200;
 
 const styles = theme => ({
@@ -74,22 +76,22 @@ const styles = theme => ({
       duration: theme.transitions.duration.leavingScreen
     }),
     overflowX: "hidden",
-    width: theme.spacing.unit * 7 + 1,
+    width: theme.spacing(7) + 1,
     [theme.breakpoints.up("sm")]: {
-      width: theme.spacing.unit * 9 + 1
+      width: theme.spacing(9) + 1
     }
   },
   toolbar: {
     display: "flex",
     alignItems: "center",
-    marginTop: theme.spacing.unit,
+    marginTop: theme.spacing(1),
     justifyContent: "flex-end",
     padding: "0 8px",
     ...theme.mixins.toolbar
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 3
+    padding: theme.spacing(3)
   },
   grow: {
     flexGrow: 1
@@ -119,8 +121,8 @@ class Frame extends React.Component {
 
   render() {
     const { classes, withSideBar } = this.props;
-    const { anchorEl } = this.state;
-    const open = Boolean(anchorEl);
+    //const { anchorEl } = this.state;
+    //const open = Boolean(anchorEl);
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -133,7 +135,7 @@ class Frame extends React.Component {
         >
           <Toolbar disableGutters={true}>
             {
-              withSideBar==true &&
+              withSideBar &&
               <IconButton
               color="inherit"
               aria-label="Open drawer"
@@ -162,7 +164,7 @@ class Frame extends React.Component {
         </AppBar>
 
         {
-              withSideBar==true &&
+              withSideBar &&
         <Drawer
           variant="permanent"
           className={classNames(classes.drawer, {
@@ -179,18 +181,20 @@ class Frame extends React.Component {
         >
         <div className={classes.toolbar} />
           <List>
-            <ListItem button key="Search">
-              <ListItemIcon>
-                <SearchIcon />
-              </ListItemIcon>
-              <ListItemText primary="Search" />
-            </ListItem>
+            <Link to="/">
+              <ListItem button key="Search">
+                <ListItemIcon>
+                  <SearchIcon />
+                </ListItemIcon>
+                <ListItemText primary="Search" />
+              </ListItem>
+              </Link>
 
-            <ListItem button key="About">
+            <ListItem button key="Download">
               <ListItemIcon>
                 <InboxIcon />
               </ListItemIcon>
-              <ListItemText primary="About" />
+              <ListItemText primary="Download" />
             </ListItem>
           </List>
           {/*<Divider />*/}
@@ -207,7 +211,7 @@ class Frame extends React.Component {
 
 Frame.propTypes = {
   classes: PropTypes.object.isRequired,
-  withSideBar: PropTypes.object.isRequired
+  withSideBar: PropTypes.bool.isRequired
 };
 
 export default withStyles(styles, { withSideBar: true })(Frame);

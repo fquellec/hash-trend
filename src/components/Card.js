@@ -28,38 +28,39 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    marginTop: 12,
+
   },
 });
 
 export default function SimpleCard(props) {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <Card className={classes.root}>
       <CardContent className={classes.cardContent}>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {props.name}
-        </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
-        </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
-        <Typography variant="body2" component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+       {props.children}
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
+
+export function MainPageCard(props) {
+    const classes = useStyles();
+  
+    return (
+        <SimpleCard>
+            <Typography variant="h5" component="h2">
+                {props.icon} {props.title}
+            </Typography>
+            <Typography className={classes.pos} color="textSecondary">
+                {props.subtitle}
+            </Typography>
+            <Typography className={classes.pos} variant="body2" component="p">
+                {props.body}
+            </Typography>
+        </SimpleCard>
+    );
+  }
 
 export function DashCard(props) {
     const classes = useStyles();
