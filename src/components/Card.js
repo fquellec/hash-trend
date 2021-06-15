@@ -8,7 +8,8 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
+    minWidth: 100,
+    padding: '10px',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -19,10 +20,10 @@ const useStyles = makeStyles({
   cardContent: {
     flexGrow: 1,
   },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
+  value: {
+    textAlign: 'center',
+    fontSize: 24,
+
   },
   title: {
     fontSize: 14,
@@ -60,9 +61,24 @@ export function MainPageCard(props) {
             </Typography>
         </SimpleCard>
     );
-  }
+}
 
-export function DashCard(props) {
+export function SingleValueCard(props) {
+    const classes = useStyles();
+  
+    return (
+        <SimpleCard>
+            <Typography variant="h6" component="h5">
+                {props.title}
+            </Typography>
+            <Typography className={classes.value} color="textSecondary">
+                {props.value} {props.icon} 
+            </Typography>
+        </SimpleCard>
+    );
+}
+
+export function StatCard(props) {
     const classes = useStyles();
     const bull = <span className={classes.bullet}>•</span>;
   

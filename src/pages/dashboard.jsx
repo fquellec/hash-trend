@@ -7,6 +7,11 @@ import { makeStyles } from '@material-ui/core/styles';
 import LineChart from "../components/graphs/LineChart"
 import GaugeChart from "../components/graphs/GaugeChart"
 import Typography from '@material-ui/core/Typography';
+import {SingleValueCard} from "../components/Card"
+import TwitterIcon from '@material-ui/icons/Twitter';
+import FavoriteIcon from '@material-ui/icons/Favorite';
+import ChatIcon from '@material-ui/icons/Chat';
+import RepeatIcon from '@material-ui/icons/Repeat';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -25,20 +30,32 @@ const DashBoardPage = (props) => {
             <Container className={classes.cardGrid} maxWidth="lg">
                 <Grid container spacing={4}>
                     <Grid item key="nb-tweets-total" xs={6} sm={6} md={3}>  
-                        <SimpleCard>
-                        </SimpleCard>
+                        <SingleValueCard     
+                            title = "Total"
+                            value = "232100"
+                            icon = {<TwitterIcon/>}
+                        />
                     </Grid>
                     <Grid item key="nb-tweets-retweet" xs={6} sm={6} md={3}>  
-                        <SimpleCard>
-                        </SimpleCard>
+                        <SingleValueCard     
+                            title = "Likes"
+                            value = "3100"
+                            icon = {<FavoriteIcon/>}
+                        />
                     </Grid>
                     <Grid item key="nb-tweets-reply" xs={6} sm={6} md={3}>  
-                        <SimpleCard>
-                        </SimpleCard>
+                        <SingleValueCard     
+                            title = "Comments"
+                            value = "21100"
+                            icon = {<ChatIcon/>}
+                        />
                     </Grid>
                     <Grid item key="nb-tweets-original" xs={6} sm={6} md={3}>  
-                        <SimpleCard>
-                        </SimpleCard>
+                        <SingleValueCard     
+                            title = "Retweets"
+                            value = "10230"
+                            icon = {<RepeatIcon/>}
+                        />
                     </Grid>
                     <Grid item key="nb-tweets" xs={12} sm={12} md={12}>  
                         <SimpleCard>
