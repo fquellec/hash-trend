@@ -22,8 +22,20 @@ const useStyles = makeStyles({
   },
   value: {
     textAlign: 'center',
+    verticalAlign: 'top',
     fontSize: 24,
-
+  },
+  values: {
+      display: 'flex',
+  },
+  description: {
+    textAlign: 'center',
+    fontWeight: '300',
+  },
+  icon: {
+    width: 60,
+    height: 60,
+    textAlign: 'left',
   },
   title: {
     fontSize: 14,
@@ -68,12 +80,13 @@ export function SingleValueCard(props) {
   
     return (
         <SimpleCard>
-            <Typography variant="h6" component="h5">
-                {props.title}
-            </Typography>
-            <Typography className={classes.value} color="textSecondary">
-                {props.value} {props.icon} 
-            </Typography>
+            <div className={classes.values}>
+                <div className={classes.icon}>{props.icon}</div>
+                <div>
+                    <div className={classes.value}>{props.value} </div>
+                    <p className={classes.description}>{props.title}</p>
+                </div>
+            </div>
         </SimpleCard>
     );
 }
