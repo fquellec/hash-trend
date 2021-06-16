@@ -24,9 +24,9 @@ for (var i = 0; i < 100; i++) {
 
 // Chart options
 let option = {
-    title: {
-        text: 'Number of tweets per day'
-    },
+    //title: {
+    //    text: 'Number of tweets per day'
+    //},
     //legend: {
     //    data: ['bar', 'bar2']
     //},
@@ -37,9 +37,9 @@ let option = {
             //    type: ['stack', 'tiled']
             //},
             //dataView: {},
-            saveAsImage: {
-                pixelRatio: 2
-            }
+            //saveAsImage: {
+            //    pixelRatio: 2
+            //}
         }
     },
     tooltip: {},
