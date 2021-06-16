@@ -58,19 +58,15 @@ let option = {
         emphasis: {
             focus: 'series'
         },
-        animationDelay: function (idx) {
-            return idx * 200;
-        }
+        animationDelay: 300
     }, 
     ],
     animationEasing: 'elasticOut',
-    animationDelayUpdate: function (idx) {
-        return idx * 205;
-    }
+    animationDelayUpdate: 300,
 };
 
 export default function LineChart(props) {
     return (
-        <ReactEcharts option={option} style={style} className="line-chart" />
+        <ReactEcharts option={option} style={style}  opts={{renderer: 'svg'}} className="line-chart" />
     );
 } 

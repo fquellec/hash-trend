@@ -5,6 +5,8 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
 import LineChart from "../components/graphs/LineChart"
 import GaugeChart from "../components/graphs/GaugeChart"
+import BasicTable from "../components/Table";
+import BarRace from "../components/graphs/BarRace";
 import Typography from '@material-ui/core/Typography';
 import { SingleValueCard, StatCard } from "../components/Card"
 import TwitterIcon from '@material-ui/icons/Twitter';
@@ -68,22 +70,27 @@ const DashBoardPage = (props) => {
                     </Grid>
                     <Grid item  xs={12} sm={12} md={5}>  
                         <StatCard title="Hashtags Race">
-                            <GaugeChart/>
+                            <BarRace/>
+                        </StatCard>
+                    </Grid>
+                    <Grid item  xs={12} sm={12} md={8}>  
+                        <StatCard title="Retweet Interaction Graph">
+                            
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Accounts">
-                            <GaugeChart/>
+                            <BasicTable/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Tweets">
-                            <GaugeChart/>
+                            <BasicTable/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={4}>  
-                        <StatCard title="Retweet Interaction Graph">
-                            <GaugeChart/>
+                    <Grid item  xs={12} sm={12} md={8}>  
+                        <StatCard title="Location">
+                            
                         </StatCard>
                     </Grid>
                 </Grid>
