@@ -25,6 +25,7 @@ let option = {
         max: 2 // only the largest 3 bars will be displayed
     },
     series: [{
+        color: '#2D5C7F',
         realtimeSort: true,
         name: 'X',
         type: 'bar',

@@ -3,9 +3,10 @@ import Frame from "../components/frame";
 import Grid from '@material-ui/core/Grid';
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core/styles';
-import LineChart from "../components/graphs/LineChart"
-import GaugeChart from "../components/graphs/GaugeChart"
+import BarChart from "../components/graphs/BarChart"
+import PieChart from "../components/graphs/PieChart"
 import BasicTable from "../components/Table";
+import ForceGrah from "../components/graphs/ForceGraph";
 import BarRace from "../components/graphs/BarRace";
 import Typography from '@material-ui/core/Typography';
 import { SingleValueCard, StatCard } from "../components/Card"
@@ -13,6 +14,7 @@ import TwitterIcon from '@material-ui/icons/Twitter';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 import RepeatIcon from '@material-ui/icons/Repeat';
+import TweetList from '../components/TweetList';
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -60,12 +62,12 @@ const DashBoardPage = (props) => {
                     </Grid>
                     <Grid item key="nb-tweets" xs={12} sm={12} md={12}>  
                         <StatCard title="Number of tweets per day">
-                            <LineChart/>
+                            <BarChart/>
                         </StatCard>
                     </Grid>
                     <Grid item key="sentiment" xs={12} sm={12} md={7}>  
                         <StatCard title="General sentiments of the tweets">
-                            <GaugeChart/>
+                            <PieChart/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={5}>  
@@ -75,7 +77,7 @@ const DashBoardPage = (props) => {
                     </Grid>
                     <Grid item  xs={12} sm={12} md={8}>  
                         <StatCard title="Retweet Interaction Graph">
-                            
+                            <ForceGrah id="forceGraph" />
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
@@ -85,7 +87,7 @@ const DashBoardPage = (props) => {
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Tweets">
-                            <BasicTable/>
+                            <TweetList/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={8}>  

@@ -52,6 +52,7 @@ let option = {
     yAxis: {
     },
     series: [{
+        color: "#2D5C7F",
         name: 'bar',
         type: 'bar',
         data: data1,
@@ -65,7 +66,7 @@ let option = {
     animationDelayUpdate: 300,
 };
 
-export default function LineChart(props) {
+export default function BarChart(props) {
     return (
         <ReactEcharts option={option} style={style}  opts={{renderer: 'svg'}} className="line-chart" />
     );
