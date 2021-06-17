@@ -15,6 +15,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ChatIcon from '@material-ui/icons/Chat';
 import RepeatIcon from '@material-ui/icons/Repeat';
 import TweetList from '../components/TweetList';
+import WorldMap from '../components/graphs/WorldMap'
 
 const useStyles = makeStyles((theme) => ({
     cardGrid: {
@@ -65,24 +66,24 @@ const DashBoardPage = (props) => {
                             <BarChart/>
                         </StatCard>
                     </Grid>
-                    <Grid item key="sentiment" xs={12} sm={12} md={7}>  
+                    <Grid item key="sentiment" xs={12} sm={12} md={4}>  
                         <StatCard title="General sentiments of the tweets">
                             <PieChart/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={5}>  
+                    <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Hashtags Race">
                             <BarRace/>
-                        </StatCard>
-                    </Grid>
-                    <Grid item  xs={12} sm={12} md={8}>  
-                        <StatCard title="Retweet Interaction Graph">
-                            <ForceGrah id="forceGraph" />
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Accounts">
                             <BasicTable/>
+                        </StatCard>
+                    </Grid>
+                    <Grid item  xs={12} sm={12} md={12}>  
+                        <StatCard title="Retweet Interaction Graph">
+                            <ForceGrah id="forceGraph" />
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
@@ -92,7 +93,7 @@ const DashBoardPage = (props) => {
                     </Grid>
                     <Grid item  xs={12} sm={12} md={8}>  
                         <StatCard title="Location">
-                            
+                            <WorldMap />
                         </StatCard>
                     </Grid>
                 </Grid>

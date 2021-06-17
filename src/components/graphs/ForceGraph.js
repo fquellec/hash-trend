@@ -5,14 +5,17 @@ import forceBoundary from 'd3-force-boundary';
 
 const graph = require("../../fakeDB/graph.json");
 
-const height = 350;
-const width = 800;
-
 function ForceGraph({ graph1 }) {
   const ref = useD3(
     (svg) => {
         const borderColor = ["white", "#34495e"];
 
+        const height = svg.node().getBoundingClientRect().height ;
+        const width = svg.node().getBoundingClientRect().width ;
+
+        svg.attr('preserveAspectRatio', "xMinYMin meet")
+            .attr('viewBox', "0 0 " + width + " " + height)
+   
         // Viz margin
         //const margin = { top: 20, right: 30, bottom: 30, left: 40 };
     
@@ -110,16 +113,11 @@ function ForceGraph({ graph1 }) {
             ref={ref}
             style={{
                 width: "100%",
-                height: "100%",
-                preserveAspectRatio: "xMinYMin meet",
-                viewBox: "0 0 " + width + " " + height,
+                height: "50vh",
                 marginRight: "0px",
                 marginLeft: "0px",
             }}
             >
-            <g className="plot-area" />
-            <g className="x-axis" />
-            <g className="y-axis" />
         </svg>
   );
 }
