@@ -15,8 +15,7 @@ const useStyles = makeStyles((theme) => ({
     root: {
       padding: '2px 4px',
       display: 'grid',
-      justifyContent: 'center',
-      width: '100%',
+      alignItems: 'center',
     },
     input: {
       marginLeft: theme.spacing(1),

@@ -3,9 +3,10 @@ import React from 'react';
 import * as d3 from 'd3';
 import forceBoundary from 'd3-force-boundary';
 
-const graph = require("../../fakeDB/graph.json");
+//const graph = require("../../fakeDB/graph.json");
 
-function ForceGraph({ graph1 }) {
+function ForceGraph( props ) {
+  const graph = props.data
   const ref = useD3(
     (svg) => {
         const borderColor = ["white", "#34495e"];

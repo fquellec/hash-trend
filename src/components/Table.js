@@ -1,60 +1,55 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableContainer from '@material-ui/core/TableContainer';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
+import * as React from 'react';
+import { DataGrid } from '@material-ui/data-grid';
 
-const useStyles = makeStyles({
-  table: {
-    maxWidth: 650,
+const columns = [
+  {
+    field: 'user_name',
+    headerName: 'Account',
+    width: 150,
+    editable: false,
   },
-});
-
-function createData(name, calories, fat, carbs, protein) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData('test', 159, 6.0, 24, 4.0),
-  createData('test2', 237, 9.0, 37, 4.3),
-  createData('test3', 262, 16.0, 24, 6.0),
-  createData('test4', 305, 3.7, 67, 4.3),
-  createData('test5', 356, 16.0, 49, 3.9),
+  {
+    field: 'followers',
+    headerName: 'Followers',
+    type: 'number',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'likes',
+    headerName: 'Likes',
+    type: 'number',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'retweets',
+    headerName: 'Retweets',
+    type: 'number',
+    width: 150,
+    editable: false,
+  },
+  {
+    field: 'nb_tweets',
+    headerName: 'Tweets',
+    type: 'number',
+    width: 150,
+    editable: false,
+  },
+  
 ];
 
-export default function BasicTable() {
-  const classes = useStyles();
-
+export default function DataGridDemo(props) {
+  let rows = props.data.map(obj=> ({ ...obj, id: obj.user_name }))
   return (
-    <TableContainer component={Paper}>
-      <Table className={classes.table} aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell>Account</TableCell>
-            <TableCell align="right">Followers</TableCell>
-            <TableCell align="right">Following</TableCell>
-            <TableCell align="right">Interactions</TableCell>
-            <TableCell align="right">Tweets</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.name}>
-              <TableCell component="th" scope="row">
-                {row.name}
-              </TableCell>
-              <TableCell align="right">{row.calories}</TableCell>
-              <TableCell align="right">{row.fat}</TableCell>
-              <TableCell align="right">{row.carbs}</TableCell>
-              <TableCell align="right">{row.protein}</TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <div style={{ height: 400, width: '100%' }}>
+      <DataGrid
+        rows={rows}
+        columns={columns}
+        pageSize={5}
+        disableSelectionOnClick
+        disableColumnFilter
+      />
+    </div>
   );
 }

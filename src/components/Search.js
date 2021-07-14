@@ -37,7 +37,7 @@ function SearchForm(props) {
         event.preventDefault();
         props.history.push({
             pathname: '/dashboard',
-            search: `?${name}`,
+            search: `?${ encodeURIComponent(name)}`,
         })
     }
     const classes = useStyles();

@@ -20,8 +20,11 @@ const DashBoardPage = (props) => {
             fetch(apiUrl)
                 .then((res) => res.json())
                 .then((res) => {
+                    console.log(res.code)
                     if (res.code === 200) {
                         setLoadState({ error: false, loading: false, status:res['status'], data: res['result'] });
+                    } else if (res.code === 206) {
+                        setLoadState({ error: false, loading: false, status:res['status'], data: res['result'] }); // TODO: Popup
                     } else if (res.code === 202){
                         setLoadState({ error: false, loading: true, status:res['status'], data: null}); 
                         setTimeout(fetchData, intervalDelay)
@@ -29,7 +32,7 @@ const DashBoardPage = (props) => {
                         setLoadState({ error: true, loading: true, status:res['status'], data: null});
                     }
                 })
-                .catch(error => {console.log(error);});
+                .catch(error => {setLoadState({ error: true, loading: true, status:"API does not respond", data: null})});
         }, intervalDelay);
         
         return()=>clearTimeout(timeout)
@@ -38,9 +41,9 @@ const DashBoardPage = (props) => {
     return (
         <Frame withSideBar={true}>
             <Typography color="textSecondary">
-                Query : {props.location.search.slice(1)}
+                Query : {decodeURIComponent(props.location.search.slice(1))}
             </Typography>
-            <Loader  loading={loadState.loading} data={loadState.data} status={loadState.status} />
+            <Loader  loading={loadState.loading} data={loadState.data} status={loadState.status} error={loadState.error}/>
         </Frame>
     );
 }

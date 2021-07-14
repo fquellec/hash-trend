@@ -23,50 +23,56 @@ for (var i = 0; i < 100; i++) {
 }
 
 // Chart options
-let option = {
-    //title: {
-    //    text: 'Number of tweets per day'
-    //},
-    //legend: {
-    //    data: ['bar', 'bar2']
-    //},
-    toolbox: {
-        // y: 'bottom',
-        feature: {
-            //magicType: {
-            //    type: ['stack', 'tiled']
-            //},
-            //dataView: {},
-            //saveAsImage: {
-            //    pixelRatio: 2
-            //}
-        }
-    },
-    tooltip: {},
-    xAxis: {
-        data: xAxisData,
-        splitLine: {
-            show: false
-        }
-    },
-    yAxis: {
-    },
-    series: [{
-        color: "#2D5C7F",
-        name: 'bar',
-        type: 'bar',
-        data: data1,
-        emphasis: {
-            focus: 'series'
-        },
-        animationDelay: 300
-    }, 
-    ],
-    animationEasing: 'elasticOut',
-    animationDelayUpdate: 300,
-};
+
 
 export default function BarChart(props) {
+    var xAxisData = [];
+    var data1 = [];
+    
+    props.data.forEach(element => {xAxisData.push(element.name);data1.push(element.value)});
+
+    let option = {
+        //title: {
+        //    text: 'Number of tweets per day'
+        //},
+        //legend: {
+        //    data: ['bar', 'bar2']
+        //},
+        toolbox: {
+            // y: 'bottom',
+            feature: {
+                //magicType: {
+                //    type: ['stack', 'tiled']
+                //},
+                //dataView: {},
+                //saveAsImage: {
+                //    pixelRatio: 2
+                //}
+            }
+        },
+        tooltip: {},
+        xAxis: {
+            data: xAxisData,
+            splitLine: {
+                show: false
+            }
+        },
+        yAxis: {
+        },
+        series: [{
+            color: "#2D5C7F",
+            name: 'Tweets per hour',
+            type: 'bar',
+            data: data1,
+            emphasis: {
+                focus: 'series'
+            },
+            animationDelay: 300
+        }, 
+        ],
+        animationEasing: 'elasticOut',
+        animationDelayUpdate: 300,
+    };
     return (
         <ReactEcharts option={option} style={style}  opts={{renderer: 'svg'}} className="line-chart" />
     );

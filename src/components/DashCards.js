@@ -6,7 +6,7 @@ import BarChart from "../components/graphs/BarChart"
 import PieChart from "../components/graphs/PieChart"
 import BasicTable from "../components/Table";
 import ForceGrah from "../components/graphs/ForceGraph";
-import BarRace from "../components/graphs/BarRace";
+import BarTop from "./graphs/BarTop";
 import { SingleValueCard, StatCard } from "../components/Card"
 import TwitterIcon from '@material-ui/icons/Twitter';
 import FavoriteIcon from '@material-ui/icons/Favorite';
@@ -58,32 +58,32 @@ const DashCards = (props) => {
                     </Grid>
                     <Grid item key="nb-tweets" xs={12} sm={12} md={12}>  
                         <StatCard title="Number of tweets per day">
-                            <BarChart/>
+                            <BarChart data={props.volumes}/>
                         </StatCard>
                     </Grid>
                     <Grid item key="sentiment" xs={12} sm={12} md={4}>  
                         <StatCard title="General sentiments of the tweets">
-                            <PieChart/>
+                            <PieChart data={props.sentiment}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
-                        <StatCard title="Hashtags Race">
-                            <BarRace/>
+                        <StatCard title="Hashtags Top 10">
+                            <BarTop data={props.hahstags_top_10}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Accounts">
-                            <BasicTable/>
+                            <BasicTable data={props.top_actors}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={12}>  
                         <StatCard title="Retweet Interaction Graph">
-                            <ForceGrah id="forceGraph" />
+                            <ForceGrah id="forceGraph" data={props.graph}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={4}>  
                         <StatCard title="Top Tweets">
-                            <TweetList/>
+                            <TweetList data={props.top_tweet}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={8}>  

@@ -13,27 +13,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TweetList() {
+export default function TweetList(props) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
-        <ListItem>
-            <Tweet tweetId="841418541026877441" />
-        </ListItem>
-        <ListItem>
-            <Tweet tweetId="841418541026877441" />
-        </ListItem>
-        <ListItem>
-            <Tweet tweetId="841418541026877441" />
-        </ListItem>
-        <ListItem>
-            <Tweet tweetId="841418541026877441" />
-        </ListItem>
-        <ListItem>
-            <Tweet tweetId="841418541026877441" />
-        </ListItem>
+        {props.data.map((id) => (
+            <ListItem>
+              <Tweet tweetId={id} />
+            </ListItem>
+        ))}
       </List>  
     </div>
   );

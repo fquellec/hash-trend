@@ -26,7 +26,14 @@ const useStyles = makeStyles((theme) => ({
 function Loader(props) {
     const classes = useStyles();
     console.log(props)
-    if (!props.loading) return (<DashCards {...props.data} />);
+    if(props.error) return (
+    <div className={classes.root}>
+        <Typography className={classes.title} variant="h5" component="h2">
+            {props.status} 
+        </Typography>
+    </div>
+    );
+    else if (!props.loading) return (<DashCards {...props.data} />);
     return (
         <div className={classes.root}>
             <Typography className={classes.title} variant="h5" component="h2">
