@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardContent, CardHeader } from '@material-ui/core';
 import Typography from '@material-ui/core/Typography';
 
-import MenuListComposition from './CardDropDown';
+import CardDropDown from './CardDropDown';
 
 const useStyles = makeStyles({
   root: {
@@ -48,7 +48,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard(props) {
+export function SimpleCard(props) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
@@ -95,17 +95,22 @@ export function SingleValueCard(props) {
 
 export function StatCard(props) {
   const classes = useStyles();
+
+  const { id, title, data, children } = props;
+
   return (
     <Card className={classes.root}>
       <CardHeader
         action={
-          <MenuListComposition/>
+          <CardDropDown id={id} data={data} />
         }
         titleTypographyProps={{className:classes.titleStats }}
-        title={props.title}
+        title={title}
       />
       <CardContent className={classes.cardContent}>
-       {props.children}
+        <div id = {id}> 
+          {children}
+        </div> 
       </CardContent>
     </Card>
   );

@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     overflow: 'auto',
     backgroundColor: theme.palette.background.paper,
   },
+  tweet: {
+    width: '100%',
+    overflow: 'hidden',
+  }
 }));
 
 export default function TweetList(props) {
@@ -20,8 +24,10 @@ export default function TweetList(props) {
     <div className={classes.root}>
       <List component="nav" aria-label="main mailbox folders">
         {props.data.map((id) => (
-            <ListItem>
-              <Tweet tweetId={id} />
+            <ListItem key={id}>
+              <div className={classes.tweet}>
+                <Tweet tweetId={id} />
+              </div>
             </ListItem>
         ))}
       </List>  

@@ -14,6 +14,8 @@ const DashBoardPage = (props) => {
 
     const intervalDelay = 2000;
 
+    const query = decodeURIComponent(props.location.search.slice(1));
+
     useEffect(() => {
         const apiUrl = `http://185.227.111.113/?query=` + props.location.search.slice(1);
         const timeout = setTimeout(function fetchData() {
@@ -41,9 +43,9 @@ const DashBoardPage = (props) => {
     return (
         <Frame withSideBar={true}>
             <Typography color="textSecondary">
-                Query : {decodeURIComponent(props.location.search.slice(1))}
+                Query : {query}
             </Typography>
-            <Loader  loading={loadState.loading} data={loadState.data} status={loadState.status} error={loadState.error}/>
+            <Loader  query={query} loading={loadState.loading} data={loadState.data} status={loadState.status} error={loadState.error}/>
         </Frame>
     );
 }

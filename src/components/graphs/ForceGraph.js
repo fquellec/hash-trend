@@ -32,6 +32,24 @@ function ForceGraph( props ) {
         //.domain(colorScaleDomain)
         //.range(colorScaleRange);
 
+        const tooltip = d3.select('body')
+            .append("div")
+                .style("opacity", 0)
+                .attr("class", "tooltip")
+                .style("font-family", "inherit")
+                .style("font-size", "0.7rem")
+                .style("background-color", "white")
+                .style("border", "solid white")
+                .style("border-width", "2px")
+                .style("border-radius", "5px")
+                .style("padding", "5px")
+                .style("position", "absolute")
+                .style("width", "200px")
+                .style("pointer-events", "none")
+                .style("webkit-box-shadow", "0px 0px 10px grey")
+                .style("moz-box-shadow",  "0px 0px 10px grey")
+                .style("box-shadow", "0px 0px 10px grey");
+
         var simulation = d3.forceSimulation()
             .force("boundary", forceBoundary(30,30,width-30, height-30))
             .force("link", d3.forceLink().id(function(d) { return d.id; }))
@@ -59,11 +77,47 @@ function ForceGraph( props ) {
             .attr("fill", function(d) { return "#2D5C7F"; })
             .attr("stroke", function(d) {return borderColor[0]; })
             .attr("stroke-opacity", 1)
-            .attr("stroke-width", function(d) {return 0.1*size(size(d.nb_tweets));})
+            .attr("stroke-width", function(d) {return 0.1*size(d.nb_tweets);})
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
                 .on("end", dragended))
+            .on("mouseover", function(event, d){
+                var textToDisplay = "<b>" + d.name + "</b><br>" 
+                            + "Nombre de tweets: <b>" + d.nb_tweets + "</b>.<br>"
+                            + "Nombre de Followers: <b>" + d.followers + "</b>.<br>"
+                            + "Nombre d'intéractions': <b>" + d.interaction + "</b>.<br>"
+                            ;
+        
+                // Compute bounded coordinates
+                //const tooltipWidth = tooltip.node().getBoundingClientRect().width 
+                //const tooltipHeight =  tooltip.node().getBoundingClientRect().height 
+                //const mapWidth = svg.node().getBoundingClientRect().width 
+                //const mapHeight = svg.node().getBoundingClientRect().height 
+                var left = event.pageX
+                var top = event.pageY
+                //var left = Math.max(0, Math.min(mapWidth - tooltipWidth, event.pageX - d3.select('.tooltip').node().offsetWidth - 5));
+                //var top = Math.max(0, Math.min(mapHeight - tooltipHeight, event.pageY - d3.select('.tooltip').node().offsetHeight));
+                // console.log(tooltipWidth, tooltipHeight, mapWidth, mapHeight)
+                //console.log(left ,  top)
+
+                tooltip
+                    .html(textToDisplay)
+                    .style("left", left + "px")
+                    .style("top", top + "px");
+        
+        
+                tooltip.style("opacity", 1);
+                d3.select(this.parentNode.appendChild(this)).style("stroke", "#2D5C7F");
+                d3.select(this.parentNode.appendChild(this)).style("fill", 'white');//brighter(1)d3.rgb(color(d.nonouiaucun)).darker(1)
+        
+                })
+                .on("mouseleave", function(d){
+                tooltip.style("opacity", 0);
+                d3.select(this.parentNode.appendChild(this)).style("fill", "#2D5C7F");
+                d3.select(this.parentNode.appendChild(this)).style("stroke", borderColor[0]);
+                    
+                });
 
     
         simulation

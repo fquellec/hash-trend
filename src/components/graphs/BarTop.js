@@ -13,8 +13,9 @@ export default function BarTop(props) {
 
     const option = {
         grid: {
-            left: '30%',
+            left: '100px',
         },
+        tooltip: {},
         xAxis: {
             type: 'value'
         },

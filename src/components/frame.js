@@ -15,7 +15,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
+import InfoIcon from '@material-ui/icons/Info';
 import SearchIcon from "@material-ui/icons/Search";
 import Link from 'react-router-dom/Link';
 
@@ -95,6 +95,10 @@ const styles = theme => ({
   },
   grow: {
     flexGrow: 1
+  },
+  LinkItem: {
+    color: 'inherit',
+    textDecoration: 'inherit',
   }
 });
 
@@ -181,20 +185,21 @@ class Frame extends React.Component {
         >
         <div className={classes.toolbar} />
           <List>
-            <Link to="/">
+            <Link to="/" className={classes.LinkItem}>
               <ListItem button key="Search">
-                <ListItemIcon>
-                  <SearchIcon />
-                </ListItemIcon>
-                <ListItemText primary="Search" />
+                  <ListItemIcon>
+                    <SearchIcon />
+                  </ListItemIcon>
+                  <ListItemText primary="Search" />
               </ListItem>
-              </Link>
+            </Link>
+            
 
-            <ListItem button key="Download">
+            <ListItem button key="about">
               <ListItemIcon>
-                <InboxIcon />
+                <InfoIcon />
               </ListItemIcon>
-              <ListItemText primary="Download" />
+              <ListItemText primary="About" />
             </ListItem>
           </List>
           {/*<Divider />*/}

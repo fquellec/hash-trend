@@ -57,37 +57,37 @@ const DashCards = (props) => {
                         />
                     </Grid>
                     <Grid item key="nb-tweets" xs={12} sm={12} md={12}>  
-                        <StatCard title="Number of tweets per day">
+                        <StatCard id="nb-tweets-chart" title="Number of tweets per day" data={props.volumes}>
                             <BarChart data={props.volumes}/>
                         </StatCard>
                     </Grid>
                     <Grid item key="sentiment" xs={12} sm={12} md={4}>  
-                        <StatCard title="General sentiments of the tweets">
+                        <StatCard id="sentiment-chart" title="General sentiments of the tweets" data={props.sentiment}>
                             <PieChart data={props.sentiment}/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={4}>  
-                        <StatCard title="Hashtags Top 10">
+                    <Grid item key="hashtags" xs={12} sm={12} md={4}>  
+                        <StatCard id="hashtags-chart" title="Hashtags Top 10" data={props.hahstags_top_10}>
                             <BarTop data={props.hahstags_top_10}/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={4}>  
-                        <StatCard title="Top Accounts">
+                    <Grid item key="top-accounts" xs={12} sm={12} md={4}>  
+                        <StatCard id="top-accounts-chart" title="Top Accounts" data={props.top_actors}>
                             <BasicTable data={props.top_actors}/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={12}>  
-                        <StatCard title="Retweet Interaction Graph">
+                    <Grid item key="retweet-graph" xs={12} sm={12} md={12}>  
+                        <StatCard id="retweet-graph-chart" title="Retweet Interaction Graph" data={props.graph}>
                             <ForceGrah id="forceGraph" data={props.graph}/>
                         </StatCard>
                     </Grid>
-                    <Grid item  xs={12} sm={12} md={4}>  
-                        <StatCard title="Top Tweets">
+                    <Grid item key="top-tweets" xs={12} sm={12} md={4}>  
+                        <StatCard id="top-tweets-list" title="Top Tweets" data={props.top_tweet}>
                             <TweetList data={props.top_tweet}/>
                         </StatCard>
                     </Grid>
                     <Grid item  xs={12} sm={12} md={8}>  
-                        <StatCard title="Location">
+                        <StatCard id="location-map" title="Location" data="">
                             <WorldMap />
                         </StatCard>
                     </Grid>
