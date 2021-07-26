@@ -17,7 +17,7 @@ const DashBoardPage = (props) => {
     const query = decodeURIComponent(props.location.search.slice(1));
 
     useEffect(() => {
-        const apiUrl = `http://185.227.111.113/?query=` + props.location.search.slice(1);
+        const apiUrl = `https://185.227.111.113:80/?query=` + props.location.search.slice(1);
         const timeout = setTimeout(function fetchData() {
             fetch(apiUrl)
                 .then((res) => res.json())
